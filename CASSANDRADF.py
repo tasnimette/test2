@@ -81,7 +81,7 @@ def BulkCassandra(dfe,session,valt):
 
     
 if __name__ == "__main__":
-    dfe=pd.read_excel("C:\\Users\\EYA\\Desktop\\DQ\\Ebroker201807Juillet.xlsx","Périmètre reprise",skiprows=[0])
+    dfe=pd.read_excel("C:\\Users\\EYA\\Desktop\\DQ\\Juillet.xlsx","Périmètre reprise",skiprows=[0])
     
     cluster = Cluster(['127.0.0.1'])
     session = cluster.connect()
@@ -95,6 +95,6 @@ if __name__ == "__main__":
     #log.info("creating keyspace...")
     session.set_keyspace(KEYSPACE)
     BulkCassandra(dfe,session,1)
-    dfe1=pd.read_excel("C:\\Users\\EYA\\Desktop\\DQ\\Ebroker201807Juillet.xlsx","Périmètre reprise",skiprows=[0])
+    dfe1=pd.read_excel("C:\\Users\\EYA\\Desktop\\DQ\\Juillet.xlsx","Périmètre reprise",skiprows=[0])
     BulkCassandra(dfe1,session,2)
     session.execute("DROP KEYSPACE " + KEYSPACE)
